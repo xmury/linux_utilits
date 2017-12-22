@@ -58,7 +58,7 @@ systemctl restart dhcpd.service
 systemctl stop firewalld
 systemctl disable firewalld
 
-yum -y install iptables-serv ices
+yum -y install iptables-services
 
 systemctl enable iptables.service
 systemctl start iptables.service
