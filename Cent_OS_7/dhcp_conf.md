@@ -40,11 +40,27 @@ subnet 192.168.1.0 netmask 255.255.255.0 {                | Указание IP 
 Указание порта раздачи IP
 -------------------------
 
-- cp /usr/lib/systemd/system/dhcpd.service /etc/systemd/system/
-- vi /etc/systemd/system/dhcpd.service
+1. cp /usr/lib/systemd/system/dhcpd.service /etc/systemd/system/
+2. vi /etc/systemd/system/dhcpd.service
     ExecStart=/usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf -user dhcpd       | Это одна строка
     -group dhcpd --no-pid <your_interface_name(s)>                          | Нужно просто вместо <your_interface_name(s)>
                                                                             | написать имя порта раздачи. Без <> 
-- systemctl --system daemon-reload
-- systemctl restart dhcpd.service
+3. systemctl --system daemon-reload
+4. systemctl restart dhcpd.service
 
+
+Настройка firewall с iptables ERROR_HARDCOR
+-------------------------------------------
+
+1. systemctl stop firewalld
+2. systemctl disable firewalld
+
+3. yum -y install iptables-serv ices
+
+4. systemctl enable iptables.service
+5. systemctl start iptables.service
+
+6. iptables -F
+7. iptables -t nat -A POSTROUTING -s 192.10.0/24 -o enp0s3 -j MASQUERADE       | ERROR_I_DOUBT
+
+8. iptables-save > /etc/sysconfig/iptables
