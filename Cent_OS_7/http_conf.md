@@ -4,6 +4,12 @@
 *Установка Apache: **yum install http***
 *Установка PHP: **yum install http***
 
+/var/named/vm.zone
+---------------
+```
+  site1   IN A    192.168.10.1                              | DNC имя нашего сайта
+  ...
+```
 /etc/httpd/conf.d/
 ------------------
 ```
@@ -13,4 +19,5 @@
           ServerName site1.vm.group                         | Адрес сайта
       </VirtualHost>
 ```
+
 P.S Не забуть перезагрузить службу **named**
