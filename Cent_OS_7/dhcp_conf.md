@@ -66,5 +66,8 @@ systemctl start iptables.service
 iptables -F
 iptables -t nat -A POSTROUTING -s 192.10.0/24 -o enp0s3 -j MASQUERADE       | ERROR_I_DOUBT
 
+vi /etc/sysctl.conf
+    net.ipv4.ip_forward=1            
+
 iptables-save > /etc/sysconfig/iptables
 ```
