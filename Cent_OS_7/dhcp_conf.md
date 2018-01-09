@@ -46,7 +46,8 @@ cp /usr/lib/systemd/system/dhcpd.service /etc/systemd/system/
 vi /etc/systemd/system/dhcpd.service
     ExecStart=/usr/sbin/dhcpd -f -cf /etc/dhcp/dhcpd.conf        | Это одна строка
     -user dhcpd -group dhcpd --no-pid <your_interface_name(s)>   | Нужно вместо <your_interface_name(s)>
-                                                                 | написать имя порта раздачи. Без <> 
+                                                                 | написать имя порта раздачи ip. Без <>
+                                                                 | P.S Внешний
 systemctl --system daemon-reload
 systemctl restart dhcpd.service
 ```
